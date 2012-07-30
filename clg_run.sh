@@ -46,10 +46,25 @@ echo PNG visualization generated, saved in $PNG.
 # REMOVE BW & TIFF IMAGES
 rm $BW1 $BW2 $TIFF
 echo Removing $BW1 $BW2 $TIFF... Removed.
+rm flow_u.png flow_v.png
+
+# GENERATE TILED IMAGE
+TRUEFLOW="$pathname/t.png"
+ORIGINAL1="$pathname/1.png"
+ORIGINAL2="$pathname/2.png"
+TRUEFLOW_LABELED="$pathname/3.png"
+FLOW_LABELED="$pathname/4.png"
+TILED="$pathname/output.png"
+convert $1 -gravity North -background White -splice 0x18 -annotate +0+2 'Input image 1' $ORIGINAL1
+convert $2 -gravity North -background White -splice 0x18 -annotate +0+2 'Input image 2' $ORIGINAL2
+convert $TRUEFLOW -gravity North -background White -splice 0x18 -annotate +0+2 'True flow' $TRUEFLOW_LABELED
+convert $PNG -gravity North -background White -splice 0x18 -annotate +0+2 'CLG computed flow' $FLOW_LABELED
+
+montage $ORIGINAL1 $ORIGINAL2 $TRUEFLOW_LABELED $FLOW_LABELED -tile 2x2 -geometry 256x274+0+0 $TILED
+rm $ORIGINAL1 $ORIGINAL2 $TRUEFLOW_LABELED $FLOW_LABELED
+display $TILED &
 
 # Haldo Spontón, 2012.
-<<<<<<< HEAD
 # IIE - FING - UDELAR.
 # haldos@fing.edu.uy
-=======
->>>>>>> 896ccaf3c60c3d5850f5b6afdeee0ff5d8c89651
+
