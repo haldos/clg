@@ -48,3 +48,5 @@ rm $BW1 $BW2 $TIFF
 echo Removing $BW1 $BW2 $TIFF... Removed.
 
 # Haldo Spontón, 2012.
+# IIE - FING - UDELAR.
+# haldos@fing.edu.uy
