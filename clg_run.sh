@@ -46,3 +46,5 @@ echo PNG visualization generated, saved in $PNG.
 # REMOVE BW & TIFF IMAGES
 rm $BW1 $BW2 $TIFF
 echo Removing $BW1 $BW2 $TIFF... Removed.
+
+# Haldo Spontón, 2012.
